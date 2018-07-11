@@ -1,0 +1,42 @@
+----- Project: Human Body Temperature Using EDA -----
+
+The mean normal body temperature was held to be 37 degrees C or 98.6 degrees F for more than 120 years since it was first conceptualized and reported by Carl Wunderlich in a famous 1868 book. But, is this value statistically correct?
+
+Goal:
+Analyze a dataset of human body temperatures and employ the concepts of hypothesis testing, confidence intervals, and statistical significance.
+
+Question 1:
+Is the distribution of body temperatures normal?
+Answer 1:
+Yes, the distribution of body temperatures was determined to be normal, through visual exploratory data analysis and a SciPy normality test.
+
+Question 2:
+Is the sample size large?
+Answer 2:
+Yes, the sample size was 130, which is greater than 30, so the Central Limit Theorem holds. 
+Observations are independent because the temperature of one person is unrelated to the temperature of another. 
+
+Question 3:
+Is the true population mean really 98.6 degrees F?
+Answer 3:
+A bootstrap hypothesis test, t-test and z-test all produced p-values that reject the null hypothesis that the population mean is 98.6 degrees F.
+
+Question 4.1:
+Draw a small sample of size 10 from the data and repeat both frequentist tests. Which one is the correct one to use?
+Answer 4.1:
+The correct test to use for a smaller sample size of 10 should be the t-test. Typically, z-score is only relevant for sample sizes that are larger than 30, and for which we know the population standard deviation.
+
+Question 4.2:
+What do you notice? What does this tell you about the difference in application of the  tt  and  zz  statistic?
+Answer 4.2:
+Repeated runs of the t-test and z-test on the smaller sample size of 10 consistently produces lower p-values from the z-test than from the t-test. This is likely due to the fact that the t-test takes into account the degrees of freedom (n-1=129 in this case), whereas the z-test does not take into account the degrees of freedom. In this particular scenario, it seems that if we are able to assume that the sample standard deviation is the population standard deviation and it is appropriate to use the z-test, then we have a higher likelihood of rejecting the null hypothesis.
+
+Question 5:
+At what temperature should we consider someone's temperature to be "abnormal"?
+Answer 5:
+According to the bootstrap approach, temperatures below 98.1 and above 98.4 are considered abnormal, assuming a 95% confidence interval.
+According to the frequentist approach, temperatures below 98.1231941122 and above 98.3752674262 are considered abnormal, assuming a 95% confidence interval. 
+
+Question 6:
+Is there a significant difference between males and females in normal temperature?
+Yes, a two-sample t-test produced a p-value that rejected the null hypothesis that males and females have the same body temperature. 
